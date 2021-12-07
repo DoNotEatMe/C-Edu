@@ -29,12 +29,12 @@ int main()
         cin >> ages[i];
     }
 
-    for (int x = 0; x < 5; x++)
+    for (int i = 0; i < 5; i++)
     {
 
-        if (dis[0] > ages[x])
+        if (dis[0] > ages[i])
         {
-            dis[0] = ages[x];
+            dis[0] = ages[i];
             // cout << "new dis[0]:" << dis[0] << endl;
         }
     }
