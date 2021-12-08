@@ -38,13 +38,14 @@ int main()
     for (int i = 0; i < tmp / 2; i++)
     {
         if (arr[i] != arr[tmp - 1 - i])
+        {
+            cout << "Number is NOT a palindrome";
             break;
+        }
         else
             count++;
     }
 
     if (count == tmp / 2)
         cout << "Great! Looks like a polindrome.";
-    else
-        cout << "Number is NOT a palindrome";
 }
