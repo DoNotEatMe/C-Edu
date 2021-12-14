@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
     int arr[100];
-    int x(0), y(0), min(INT8_MAX), max(INT_MIN);
+    int x(0), y(0), min(INT_MAX), max(INT_MIN);
 
     cout << "Insert array lenght: ";
     cin >> x;
