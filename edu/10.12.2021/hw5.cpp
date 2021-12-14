@@ -42,24 +42,11 @@ int main()
     for (int i = 0; i < m; i++)
     {
         arr3[i] = arr[k + i];
-    }
-    
-
-   
-    for (int i = 0; i < m; i++)
-    {
         arr[k + i] = arr2[i];
-    }
-  
-
-    
-    for (int i = 0; i < m; i++)
-    {
         arr[k+m+i] = arr3[i];
-        
     }
     
-
+    
     x += m;
     for (int i = 0; i < x; i++)
     {
