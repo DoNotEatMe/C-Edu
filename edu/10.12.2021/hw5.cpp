@@ -37,16 +37,13 @@ int main()
     cout << "Insert k-index to past: ";
     cin >> k;
 
-
-
     for (int i = 0; i < m; i++)
     {
-        arr3[i] = arr[k + i];
-        arr[k + i] = arr2[i];
-        arr[k+m+i] = arr3[i];
+        arr3[i] = arr[k + i];     // загоняем в 3 массив все что нужно подвинуть
+        arr[k + i] = arr2[i];     // загоняем в освоодившиеся места новые значения
+        arr[k + m + i] = arr3[i]; // добавляем сохраненные подвинутые значения
     }
-    
-    
+
     x += m;
     for (int i = 0; i < x; i++)
     {
