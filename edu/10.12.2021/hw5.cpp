@@ -10,7 +10,7 @@ using namespace std;
 int main()
 {
     int arr[100], arr2[100], arr3[100];
-    int x(0), y(0), m(0), n(0), k(0), ind(0), buff(0);
+    int x(0), y(0), m(0), n(0), k(0);
 
     cout << "Insert first array lenght: ";
     cin >> x;
