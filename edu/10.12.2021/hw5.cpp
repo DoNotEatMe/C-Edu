@@ -34,7 +34,7 @@ int main()
         arr2[i] = n;
     }
 
-    cout << "Insert k-index to past: ";
+    cout << "Insert k-index to paste: ";
     cin >> k;
 
     for (int i = 0; i < m; i++)
