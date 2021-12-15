@@ -1,4 +1,5 @@
 #include <iostream>
+
 using namespace std;
 
 int main()
@@ -22,8 +23,7 @@ int main()
     // 42.5
 
     // The youngest age is 15, so the group gets a 15% discount from the total price, which is $50 - 15% = $42.5
-    
-    
+
     for (int i = 0; i < 5; ++i)
     {
         cin >> ages[i];
@@ -39,7 +39,7 @@ int main()
         }
     }
     dis[0] = 50 - 50 * (dis[0] / 100);
-    cout  << dis[0]  << endl;
+    cout << dis[0] << endl;
 
     return 0;
 }
