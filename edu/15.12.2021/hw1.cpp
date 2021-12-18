@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include <cmath>
 
 using namespace std;
@@ -10,7 +9,7 @@ using namespace std;
 
 int arrayInit();
 void arrayPrint(int array[100][100], int a);
-int arraySumf(int array[100][100], int a);
+int arraySumF(int array[100][100], int a);
 
 int main()
 {
@@ -41,7 +40,7 @@ int main()
 
     arrayPrint(arr, a);
 
-    arraySum = arraySumf(arr, a);
+    arraySum = arraySumF(arr, a);
     cout << "Sum of main diagonal is: " << arraySum;
     cout << endl;
 }
@@ -71,7 +70,7 @@ void arrayPrint(int arr[100][100], int a)
     }
 }
 
-int arraySumf(int arr[100][100], int a)
+int arraySumF(int arr[100][100], int a)
 {
     int result(0);
     for (int i = 0; i < a; i++)
