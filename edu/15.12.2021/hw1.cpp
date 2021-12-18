@@ -5,6 +5,7 @@ using namespace std;
 
 // Задача 1.1 : Пользователь вводит размер массива n и вводит значения. Требуется
 // найти сумму эл-тов над главной диагональю
+
 // Если пользователь должен ввести элементы массива сам, в array former цикле cin >> arr[i][j]
 
 int arrayInit();
@@ -44,6 +45,8 @@ int main()
     cout << "Sum of main diagonal is: " << arraySum;
     cout << endl;
 }
+
+
 
 int arrayInit()
 {
