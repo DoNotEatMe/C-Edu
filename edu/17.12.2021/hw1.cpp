@@ -38,7 +38,7 @@ int main()
     int a(0), b(0), c(0); // объявление переменных
      
     srand(time(0));
-    
+
     cout << "Insert a,b,c: ";
 
     cin >> a >> b >> c; // ввод переменных
@@ -120,7 +120,8 @@ void more(int a, int b, int c)
     //     cout << endl
     //          << "Please use y/n answer" << endl;
     //     cin >> yn;
-
+    // }
+    
         while (yn == "y")
         {
             cout << endl
@@ -145,5 +146,5 @@ void more(int a, int b, int c)
             cout << "Thanks for your attention" << endl;
             return;
         }
-    // }
+
 }
