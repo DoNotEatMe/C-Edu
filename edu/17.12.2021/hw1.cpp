@@ -25,13 +25,15 @@ using namespace std;
 // тест кейс в котором дискриминант становится отрицательным, что говорит о том, что решения нет.
 
 // объявление функций
-void count(int a, int b, int c);
-void more(int a, int b, int c);
+void count(int a, int b, int c);      //функция вычислаения квадратного уравнения
+void more(int a, int b, int c);       //цикл вычислений квадратного уравнения с рандомными значениями
 int d(int a, int b, int c);           // дискриминант
 int xPositive(int a, int b, int d);   // корень 1
                                       // если задаем для х1 float, то в 3 кейсе, (-1, 3, 0), на выходе будем получать -0. Фиксится функцией возвращающей int, но, кажется. это не верно.
-float xNegative(int a, int b, int d); // Корень 2
+float xNegative(int a, int b, int d); // корень 2
 float aZero(int b, int c);            // если a == 0, решение линейного уравнения.
+
+
 
 int main()
 {
@@ -42,8 +44,10 @@ int main()
     cin >> a >> b >> c; // ввод переменных
 
     count(a, b, c); // Функция вычисления дискриминанта по введенным данным
-    more(a, b, c); // Функция вычисления дискриминанта с рандомными данными
+    more(a, b, c);  // Функция вычисления дискриминанта с рандомными данными
 }
+
+
 
 int d(int a, int b, int c)
 {
@@ -85,7 +89,7 @@ void count(int a, int b, int c)
             cout << "No answer desc < 0";
             return;
         }
-
+        cout << endl;
         cout << "X1 = " << xPositive(a, b, desc);
         cout << endl;
         cout << "X2 = " << xNegative(a, b, desc);
@@ -93,10 +97,12 @@ void count(int a, int b, int c)
     }
     else if (a == 0 && b == 0 || b == 0) // Если a&&b == 0 || b == 0, у уравнения нет корней
     {
+        cout << endl;
         cout << "No answer a == 0 && b == 0 || b == 0";
     }
     else if (a == 0) // если a == 0, вычисляем линейное уравнение
     {
+        cout << endl;
         cout << "X = " << aZero(b, c);
     }
 }
@@ -104,13 +110,33 @@ void count(int a, int b, int c)
 void more(int a, int b, int c)
 {
     string yn;
+    string y = "y", n = "n";
 
-    cout << endl << endl
+
+    cout << endl
+         << endl
          << "More random cases? y/n" << endl;
+
     cin >> yn;
+
+
+    // Почему то не работает следующий цикл:
+    // while ( yn.compare(y) != 0 || yn.compare(n) != 0 )
+    // {
+    //     cout << endl
+    //          << "Please use y/n answer" << endl;
+    //     cin >> yn;
+    // }
+
+    if (yn == "n")
+    {
+        cout << "Thanks for your attention" << endl;
+    }
 
     while (yn == "y")
     {
+        cout << endl
+             << endl;
         a = -100 + rand() % 200;
         b = -100 + rand() % 200;
         c = -100 + rand() % 200;
@@ -118,13 +144,10 @@ void more(int a, int b, int c)
              << "b: " << b << endl
              << "c: " << c << endl;
         count(a, b, c);
-        cout <<  endl << endl << "More? y/n" << endl;
+        cout << endl
+             << endl
+             << "More? y/n" << endl;
         cin >> yn;
         cout << endl;
-    }
-
-    if (yn == "n")
-    {
-        cout << "Thanks for your attention" << endl;
     }
 }
