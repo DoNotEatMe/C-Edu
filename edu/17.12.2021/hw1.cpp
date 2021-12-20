@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <ctime>
 
 using namespace std;
 
@@ -35,7 +36,9 @@ float aZero(int b, int c);            // если a == 0, решение лин�
 int main()
 {
     int a(0), b(0), c(0); // объявление переменных
-
+     
+    srand(time(0));
+    
     cout << "Insert a,b,c: ";
 
     cin >> a >> b >> c; // ввод переменных
@@ -112,11 +115,11 @@ void more(int a, int b, int c)
 
     cin >> yn;
 
-        while (yn != "y" || yn != "n")
-    {
-        cout << endl
-             << "Please use y/n answer" << endl;
-        cin >> yn;
+    //     while (yn != "y" || yn != "n")
+    // {
+    //     cout << endl
+    //          << "Please use y/n answer" << endl;
+    //     cin >> yn;
 
         while (yn == "y")
         {
@@ -142,5 +145,5 @@ void more(int a, int b, int c)
             cout << "Thanks for your attention" << endl;
             return;
         }
-    }
+    // }
 }
