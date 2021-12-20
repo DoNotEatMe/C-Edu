@@ -139,6 +139,7 @@ void more(int a, int b, int c)
 
         if (yn == "n")
         {
+            cout << endl;
             cout << "Thanks for your attention" << endl;
             return;
         }
