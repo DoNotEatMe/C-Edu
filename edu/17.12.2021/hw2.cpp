@@ -47,13 +47,13 @@ void arrayFormer(int a)
     cin >> yn;
 
 
-    while (yn == "y" && yn != "n")
+    while (yn == "y")
     {
         cout << " Please reenter %: " << endl;
         cin >> a;
         arrayFormer(a);
         cout << endl
-             << "Repeat? y/n1" << endl;
+             << "Repeat? y/n - cycled" << endl;
         cin >> yn;
     }
     if (yn == "n")
