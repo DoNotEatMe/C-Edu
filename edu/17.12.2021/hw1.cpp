@@ -33,8 +33,6 @@ int xPositive(int a, int b, int d);   // корень 1
 float xNegative(int a, int b, int d); // корень 2
 float aZero(int b, int c);            // если a == 0, решение линейного уравнения.
 
-
-
 int main()
 {
     int a(0), b(0), c(0); // объявление переменных
@@ -46,8 +44,6 @@ int main()
     count(a, b, c); // Функция вычисления дискриминанта по введенным данным
     more(a, b, c);  // Функция вычисления дискриминанта с рандомными данными
 }
-
-
 
 int d(int a, int b, int c)
 {
@@ -110,8 +106,6 @@ void count(int a, int b, int c)
 void more(int a, int b, int c)
 {
     string yn;
-    string y = "y", n = "n";
-
 
     cout << endl
          << endl
@@ -119,35 +113,34 @@ void more(int a, int b, int c)
 
     cin >> yn;
 
-
-    // Почему то не работает следующий цикл:
-    // while ( yn.compare(y) != 0 || yn.compare(n) != 0 )
-    // {
-    //     cout << endl
-    //          << "Please use y/n answer" << endl;
-    //     cin >> yn;
-    // }
-
-    if (yn == "n")
-    {
-        cout << "Thanks for your attention" << endl;
-    }
-
-    while (yn == "y")
+        while (yn != "y" || yn != "n")
     {
         cout << endl
-             << endl;
-        a = -100 + rand() % 200;
-        b = -100 + rand() % 200;
-        c = -100 + rand() % 200;
-        cout << "a: " << a << endl
-             << "b: " << b << endl
-             << "c: " << c << endl;
-        count(a, b, c);
-        cout << endl
-             << endl
-             << "More? y/n" << endl;
+             << "Please use y/n answer" << endl;
         cin >> yn;
-        cout << endl;
+
+        while (yn == "y")
+        {
+            cout << endl
+                 << endl;
+            a = -100 + rand() % 200;
+            b = -100 + rand() % 200;
+            c = -100 + rand() % 200;
+            cout << "a: " << a << endl
+                 << "b: " << b << endl
+                 << "c: " << c << endl;
+            count(a, b, c);
+            cout << endl
+                 << endl
+                 << "More? y/n" << endl;
+            cin >> yn;
+            cout << endl;
+        }
+
+        if (yn == "n")
+        {
+            cout << "Thanks for your attention" << endl;
+            return;
+        }
     }
 }
