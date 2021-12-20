@@ -9,15 +9,16 @@ using namespace std;
 
 void arrayFormer(int a);
 int arrayCount(int arr, int a);
+void more(int a);
 
 int main()
 {
 
-    int x;
+    int a;
     srand(time(0));
     cout << "insert %: ";
-    cin >> x;
-    arrayFormer(x);
+    cin >> a;
+    arrayFormer(a);
 }
 
 void arrayFormer(int a)
@@ -25,7 +26,6 @@ void arrayFormer(int a)
     int arr[100][100];
     int n = 2 + rand() % 12;
     int count(0);
-    string yn;
 
     cout << endl
          << "Array lenght: " << n << endl;
@@ -36,6 +36,7 @@ void arrayFormer(int a)
             arr[i][j] = -10 + rand() % 100;
             cout << arr[i][j] << " ";
             count += arrayCount(arr[i][j], a);
+
         }
         cout << endl;
     }
@@ -43,9 +44,21 @@ void arrayFormer(int a)
     cout << endl
          << "Count of arr[i][j]%" << a << " == 0 in array is " << count << endl;
 
+    more(a);
+}
+
+int arrayCount(int arr, int a)
+{
+    int count;
+    arr % a == 0 ? count++ : count;
+    return count;
+}
+
+void more(int a)
+{
+    string yn;
     cout << "Repeat? y/n" << endl;
     cin >> yn;
-
 
     while (yn == "y")
     {
@@ -61,12 +74,4 @@ void arrayFormer(int a)
         cout << "thanks for your attention" << endl;
         return;
     }
-}
-
-int arrayCount(int arr, int a)
-{
-    int count;
-    arr % a == 0 ? count++ : count;
-    // cout << " __" << count << "__ ";
-    return count;
 }
