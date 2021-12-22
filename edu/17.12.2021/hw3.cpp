@@ -19,20 +19,20 @@ using namespace std;
 void insertion(int arr[100], int l);
 void quicksort(int arr[100], int l);
 void printarr(int arr[100], int l);
+void findI(int arr[100], int l, int find);
 
 int main()
 {
     int arr[100];
-    int l(0);
+    int l(0), find(0);
     cout << "Insert array lenght: ";
     cin >> l;
 
     srand(time(0));
-    
 
     for (int i = 0; i < l; i++)
     {
-        
+
         arr[i] = rand() % 100;
         cout << arr[i] << " ";
     }
@@ -40,6 +40,13 @@ int main()
     // quicksort(arr, l);
     quicksort(arr, l);
     printarr(arr, l);
+
+    cout << endl
+         << endl
+         << "insert nubmer to find: " << endl;
+    cin >> find;
+
+    findI(arr, l, find);
 }
 
 void quicksort(int arr[100], int l)
@@ -105,7 +112,8 @@ void quicksort(int arr[100], int l)
         {
             j--;
             cout << endl
-                 << "j cyc: " << j << endl << "arr[j]: " << arr[j] << endl;
+                 << "j cyc: " << j << endl
+                 << "arr[j]: " << arr[j] << endl;
         }
 
         if (i <= j) // меняем местами элементы
@@ -123,7 +131,7 @@ void quicksort(int arr[100], int l)
     } while (i <= j);
 
     // вот до этого момента все понятно, а дальше начинаю путаться мал мал. из за j i входных. Просто нужно доработать кейс на бумаге.
-   
+
     if (j > 0)
     {
         cout << endl
@@ -131,7 +139,6 @@ void quicksort(int arr[100], int l)
         printarr(arr, l);
         quicksort(arr, j + 1);
     }
-
 
     if (i < l)
     {
@@ -141,8 +148,6 @@ void quicksort(int arr[100], int l)
         quicksort(arr, l - i);
     }
 }
-
-
 
 void insertion(int arr[100], int l)
 {
@@ -215,4 +220,21 @@ void printarr(int arr[100], int l)
 
     cout << endl
          << endl;
+}
+
+void findI(int arr[100], int l, int find)
+{
+    int finder(0);
+    for (int i = 0; i < l; i++)
+    {
+        if (arr[i] == find)
+        {
+            finder = i;
+            cout << endl << "finder cycle check = " << finder <<endl;
+            break;
+        }
+    }
+    cout << endl
+         << endl
+         << "Index is: " << finder << endl;
 }
