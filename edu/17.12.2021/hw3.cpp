@@ -15,7 +15,9 @@
 using namespace std;
 
 void insertion(int arr[100], int l);
+void quicksort(int arr[100], int l);
 void printarr(int arr[100], int l);
+void qsortRecursive(int *mas, int size);
 
 int main()
 {
@@ -30,8 +32,170 @@ int main()
         cout << arr[i] << " ";
     }
 
-    insertion(arr, l);
+    // quicksort(arr, l);
+    qsortRecursive(arr, l);
     printarr(arr, l);
+}
+
+void quicksort(int arr[100], int l)
+{
+    /*  быстрая сортировка делит массив на две части и перекидывает элементы влево (меньше) и вправо (больше)
+        функция рекурсивная и и вызывает сама себя, сортируя каждые две доли, которые получаются от разделения
+        
+        входные данные: 41 67 34 0 69
+        записываем значение из середины массива = 34
+        сравниваем левое значение с серединой
+    
+        41 < 34 // skip
+        i=0
+
+        69 > 34
+        j--;
+        0 > 34 // skip
+
+        0 < 3
+        меняем индексы 0 и 3 местами
+
+        на этом этапе получаем массив 0 67 34 41 69
+
+        выполяем цикл, пока i<=j
+
+        0 < 34 
+        i++;
+        67 < 34 //skip
+
+        41 > 34 //skip
+
+        1 < 3
+        swap
+        0 41 34 67 69
+
+        
+        41 < 34 // skip
+
+        67 > 34 
+        j--
+        34 > 34 //skip
+
+        1<2
+        swap
+        0 34 41 67 69
+
+    */
+    int i = 0;            // i = нулевой индекс
+    int j = l - 1;        // j = последний индекс
+    int mid = arr[l / 2]; // mid = значение в середине массива
+    int tmp(0);
+
+    do
+    {
+        while (arr[i] < mid) //пока левое значение меньше середины перебираем массив до ближайшего к центру
+        {
+            i++;
+            cout << endl
+                 << "i cyc: " << i;
+        }
+
+        while (arr[j] > mid) // пока правое значение больше среднего перебираем до ближайшего к центру
+        {
+            j--;
+            cout << endl
+                 << "j cyc: " << j;
+        }
+
+        if (i <= j) // меняем местами элементы
+        {
+            tmp = arr[i];    //записываем в буфер значение одной из переменных
+            arr[i] = arr[j]; //присваиваем одному другое
+            arr[j] = tmp;    //возвращаем сохраненное значение в противоположный элемент
+            cout << endl
+                 << "arr i sw: " << arr[i] << " arr j sw: " << arr[j] << endl;
+            printarr(arr, l);
+            i++;
+            j--;
+            cout << "i++: " << i << " j++: " << j << endl;
+        }
+    } while (i <= j);
+
+    // вот до этого момента все понятно
+
+    //Левая сортировка работает нормально кажется
+    if (j > 0)
+    {
+        cout << endl
+             << "left" << endl;
+        printarr(arr, l);
+        quicksort(arr, j + 1);
+    }
+
+    //правая сортировка все ломает
+    if (i < l)
+    {
+        cout << endl
+             << "right" << endl;
+        printarr(arr, l);
+        quicksort(arr, l - i);
+    }
+}
+
+void qsortRecursive(int *mas, int size)
+{
+    //Указатели в начало и в конец массива
+    int i = 0;
+    int j = size - 1;
+
+    //Центральный элемент массива
+    int mid = mas[size / 2];
+
+    cout <<endl <<"mid: "<< mid << endl<< endl;
+
+    //Делим массив
+    do
+    {
+        //Пробегаем элементы, ищем те, которые нужно перекинуть в другую часть
+        //В левой части массива пропускаем(оставляем на месте) элементы, которые меньше центрального
+        while (mas[i] < mid)
+        {
+            i++;
+        }
+        //В правой части пропускаем элементы, которые больше центрального
+        while (mas[j] > mid)
+        {
+            j--;
+        }
+
+        //Меняем элементы местами
+        if (i <= j)
+        {
+            int tmp = mas[i];
+            mas[i] = mas[j];
+            mas[j] = tmp;
+            cout << endl
+                 << "arr i sw: " << mas[i] << " arr j sw: " << mas[j] << endl;
+            printarr(mas, size);
+            i++;
+            j--;
+            cout << "i++: " << i << " j++: " << j << endl;
+        }
+    } while (i <= j);
+
+    //Рекурсивные вызовы, если осталось, что сортировать
+    if (j > 0)
+    {
+        //"Левый кусок"
+        cout << endl
+             << "left" << endl;
+        printarr(mas, size);
+        qsortRecursive(mas, j + 1);
+    }
+    if (i < size)
+    {
+        //"Првый кусок"
+        cout << endl
+             << "right" << endl;
+        printarr(mas, size);
+        qsortRecursive(&mas[i], size - i);
+    }
 }
 
 void insertion(int arr[100], int l)
@@ -42,7 +206,7 @@ void insertion(int arr[100], int l)
     // далее мы берем n+1 индекс и присваем ему значение key (заданное как n+1)
     // если инде
 
-/*
+    /*
 входные данные: 41 67 34 0 69
 
 пока у нас есть длинна массива -1 мы делаем:
@@ -102,4 +266,7 @@ void printarr(int arr[100], int l)
     {
         cout << arr[i] << " ";
     }
+
+    cout << endl
+         << endl;
 }
