@@ -36,7 +36,7 @@ int main()
         cout << arr[i] << " ";
     }
 
-    // quicksort(arr, l);
+    
     quicksort(arr, l);
     printarr(arr, l);
 
