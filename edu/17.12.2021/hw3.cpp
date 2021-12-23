@@ -16,7 +16,7 @@
 using namespace std;
 
 void insertion(int arr[100], int l);
-void quicksort(int arr[100], int l);
+void quicksort(int *arr, int l);
 void printarr(int arr[100], int l);
 void findI(int arr[100], int l, int find);
 
@@ -26,6 +26,9 @@ int main()
     int l(0), find(0);
     cout << "Insert array lenght: ";
     cin >> l;
+     cout << endl
+         << "insert nubmer to find: " << endl;
+    cin >> find;
 
     srand(time(0));
 
@@ -36,19 +39,19 @@ int main()
         cout << arr[i] << " ";
     }
 
-    
+    arr[rand()%l] = find;
+
+    // quicksort(arr, l);
     quicksort(arr, l);
     printarr(arr, l);
 
-    cout << endl
-         << endl
-         << "insert nubmer to find: " << endl;
-    cin >> find;
+   
+    
 
     findI(arr, l, find);
 }
 
-void quicksort(int arr[100], int l)
+void quicksort(int *arr, int l)
 {
     /*  быстрая сортировка делит массив на две части и перекидывает элементы влево (меньше) и вправо (больше)
         функция рекурсивная и и вызывает сама себя, сортируя каждые две доли, которые получаются от разделения
@@ -98,6 +101,8 @@ void quicksort(int arr[100], int l)
     int mid = arr[l / 2]; // mid = значение в середине массива
     int tmp(0);
 
+    cout << endl << "Mid: " << mid << endl;
+
     do
     {
         while (arr[i] < mid) //пока левое значение меньше середины перебираем массив до ближайшего к центру
@@ -129,6 +134,8 @@ void quicksort(int arr[100], int l)
         }
     } while (i <= j);
 
+    cout << endl << "end of swap. " << "recursive next. i: " << i << " j: " << j << endl << endl;
+
     // вот до этого момента все понятно, а дальше начинаю путаться мал мал. из за j i входных. Просто нужно доработать кейс на бумаге.
 
     if (j > 0)
@@ -144,7 +151,7 @@ void quicksort(int arr[100], int l)
         cout << endl
              << "right" << endl;
         printarr(arr, l);
-        quicksort(arr, l - i);
+        quicksort(&arr[i], l - i);
     }
 }
 
