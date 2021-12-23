@@ -26,8 +26,11 @@ int main()
     int l(0), find(0);
     cout << "Insert array lenght: ";
     cin >> l;
+     cout << endl
+         << "insert nubmer to find: " << endl;
+    cin >> find;
 
-    // srand(time(0));
+    srand(time(0));
 
     for (int i = 0; i < l; i++)
     {
@@ -36,14 +39,14 @@ int main()
         cout << arr[i] << " ";
     }
 
+    arr[rand()%l] = find;
+
     // quicksort(arr, l);
     quicksort(arr, l);
     printarr(arr, l);
 
-    cout << endl
-         << endl
-         << "insert nubmer to find: " << endl;
-    cin >> find;
+   
+    
 
     findI(arr, l, find);
 }
