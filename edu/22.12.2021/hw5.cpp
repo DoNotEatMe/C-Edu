@@ -46,6 +46,14 @@ int main()
         cout << arr2[i] << " ";
     }
 
-    delete arr;
-    delete arr2;
+    delete [] arr;
+    delete [] arr2;
+
+    cout << endl;
+
+    for (int i = 0; i < n; i++)
+    {
+        // arr[i] = rand() % 100;
+        cout << arr[i] << " ";
+    }
 }
