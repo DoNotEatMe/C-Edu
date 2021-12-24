@@ -28,51 +28,46 @@ using namespace std;
 // тест кейс в котором дискриминант становится отрицательным, что говорит о том, что решения нет.
 
 // объявление функций
-void count(int *a, int *b, int *c, int *d, int *x1, int *x2);      //функция вычислаения квадратного уравнения
-void more(int *a, int *b, int *c, int *d, int *x1, int *x2);       //цикл вычислений квадратного уравнения с рандомными значениями
-void dfunc(int *a, int *b, int *c, int *d);           // дискриминант
-void xPositive(int *a, int *b, int *d, int *x1);   // корень 1
-                                      // если задаем для х1 float, то в 3 кейсе, (-1, 3, 0), на выходе будем получать -0. Фиксится функцией возвращающей int, но, кажется. это не верно.
-void xNegative(int *a, int *b, int *d, int *x2); // корень 2
-float aZero(int *b, int *c);            // если a == 0, решение линейного уравнения.
-void read( int *a, int *b, int *c);
+void count(int *a, int *b, int *c, int *d, int *x1, int *x2); //функция вычислаения квадратного уравнения
+void more(int *a, int *b, int *c, int *d, int *x1, int *x2);  //цикл вычислений квадратного уравнения с рандомными значениями
+void dfunc(int *a, int *b, int *c, int *d);                   // дискриминант
+void xPositive(int *a, int *b, int *d, int *x1);              // корень 1
+                                                              // если задаем для х1 float, то в 3 кейсе, (-1, 3, 0), на выходе будем получать -0. Фиксится функцией возвращающей int, но, кажется. это не верно.
+void xNegative(int *a, int *b, int *d, int *x2);              // корень 2
+float aZero(int *b, int *c);                                  // если a == 0, решение линейного уравнения.
+void read(int *a, int *b, int *c);
 
 int main()
 {
     int a(0), b(0), c(0), d(0), x1(0), x2(0); // объявление переменных
-     
     srand(time(0));
-    read(&a, &b,&c);
-   
-
+    read(&a, &b, &c);
     count(&a, &b, &c, &d, &x1, &x2); // Функция вычисления дискриминанта по введенным данным
     more(&a, &b, &c, &d, &x1, &x2);  // Функция вычисления дискриминанта с рандомными данными
 }
-void read(int *a, int *b, int *c){
- cout << "Insert a,b,c: ";
+void read(int *a, int *b, int *c)
+{
+    cout << "Insert a,b,c: ";
 
     cin >> *a >> *b >> *c; // ввод переменных
 }
 
 void dfunc(int *a, int *b, int *c, int *d)
 {
-    
+
     *d = pow(*b, 2) - 4 * *a * *c;
-    
 }
 
 void xPositive(int *a, int *b, int *d, int *x1)
 {
-    
+
     *x1 = ((*b * -1) + sqrt(*d)) / (2 * *a);
-    
 }
 
 void xNegative(int *a, int *b, int *d, int *x2)
 {
-    
+
     *x2 = ((*b * -1) - sqrt(*d)) / (2 * *a);
-  
 }
 
 float aZero(int *b, int *c)
@@ -80,13 +75,11 @@ float aZero(int *b, int *c)
     float zero;
     zero = (0 - *c) / *b;
     return zero;
-    
-    
 }
 
 void count(int *a, int *b, int *c, int *d, int *x1, int *x2)
 {
-    
+
     if (*a != 0 && *b != 0) // если a&&b != 0, считаем дискриминант
     {
         dfunc(a, b, c, d); // вызов функции дискриминанта
@@ -113,7 +106,6 @@ void count(int *a, int *b, int *c, int *d, int *x1, int *x2)
     {
         cout << endl;
         cout << "X = " << aZero(b, c);
-        
     }
 }
 
@@ -127,29 +119,28 @@ void more(int *a, int *b, int *c, int *d, int *x1, int *x2)
 
     cin >> yn;
 
-        while (yn == "y")
-        {
-            cout << endl
-                 << endl;
-            *a = -100 + rand() % 200;
-            *b = -100 + rand() % 200;
-            *c = -100 + rand() % 200;
-            cout << "a: " << *a << endl
-                 << "b: " << *b << endl
-                 << "c: " << *c << endl;
-            count(a, b, c, d, x1, x2);
-            cout << endl
-                 << endl
-                 << "More? y/n" << endl;
-            cin >> yn;
-            cout << endl;
-        }
+    while (yn == "y")
+    {
+        cout << endl
+             << endl;
+        *a = -100 + rand() % 200;
+        *b = -100 + rand() % 200;
+        *c = -100 + rand() % 200;
+        cout << "a: " << *a << endl
+             << "b: " << *b << endl
+             << "c: " << *c << endl;
+        count(a, b, c, d, x1, x2);
+        cout << endl
+             << endl
+             << "More? y/n" << endl;
+        cin >> yn;
+        cout << endl;
+    }
 
-        if (yn == "n")
-        {
-            cout << endl;
-            cout << "Thanks for your attention" << endl;
-            return;
-        }
-
+    if (yn == "n")
+    {
+        cout << endl;
+        cout << "Thanks for your attention" << endl;
+        return;
+    }
 }
