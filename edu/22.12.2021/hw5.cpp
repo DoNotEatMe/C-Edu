@@ -15,28 +15,32 @@
 
 using namespace std;
 
-int main(){
-    
-    int n(0),x(0);
+int main()
+{
+
+    int n(0), x(0);
     srand(time(0));
-    n = 3+rand()%10;
+    n = 3 + rand() % 10;
     int *arr = new int[n];
 
-    for (int i =0; i < n; i++){
+    for (int i = 0; i < n; i++)
+    {
         arr[i] = rand() % 100;
         cout << arr[i] << " ";
     }
 
- cout << endl;
+    cout << endl;
     cout << "Insert number: ";
     cin >> x;
     cout << endl;
 
-    int *arr2 = new int[n+1];
+    int *arr2 = new int[n + 1];
 
-    for (int i = 0; i < n+1; i++){
+    for (int i = 0; i < n + 1; i++)
+    {
         arr2[i] = arr[i];
-        if ( i == n ){
+        if (i == n)
+        {
             arr2[i] = x;
         }
         cout << arr2[i] << " ";
@@ -44,6 +48,4 @@ int main(){
 
     delete arr;
     delete arr2;
-
-
 }
