@@ -25,11 +25,13 @@ int main()
     }
     arrayMinMax(&n, arr, &arrMax, &arrMin);
 
-    cout << endl << "New array: "<< endl;
-     for (int i = 0; i < n; i++)
+    cout << endl
+         << "New array: " << endl;
+    for (int i = 0; i < n; i++)
     {
         cout << arr[i] << " ";
     }
+    delete arr;
 }
 
 void arrayMinMax(const int *n, int *arr, int *arrMax, int *arrMin)

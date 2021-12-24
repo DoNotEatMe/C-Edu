@@ -11,7 +11,7 @@ void arrayMinMax(const int *n, int *arr, int *arrMax, int *arrMin);
 int main()
 {
     int n(0), arrMax(INT_MIN), arrMin(INT_MAX);
-    
+
     srand(time(0));
     n = 3 + rand() % 10;
     // cout << "Insert array lenght: ";
@@ -24,6 +24,7 @@ int main()
         cout << arr[i] << " ";
     }
     arrayMinMax(&n, arr, &arrMax, &arrMin);
+    delete arr;
 }
 
 void arrayMinMax(const int *n, int *arr, int *arrMax, int *arrMin)
