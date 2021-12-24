@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cmath>
+#include <ctime>
+
 // 1) написать функцию сортировки массива.
 // На вход подаётся массив и длина, функция сортирует (выбрать любую сортировку) и выводит отсортированный массив.
 
@@ -10,34 +12,46 @@
 // Думай как по-другому найти индекс эл-та.
 // Подсказка: всегда можно отсекать половину)
 
-// #include <ctime>
 
 using namespace std;
 
 void insertion(int arr[100], int l);
-void quicksort(int arr[100], int l);
+void quicksort(int *arr, int l);
 void printarr(int arr[100], int l);
-void qsortRecursive(int *mas, int size);
+void findI(int arr[100], int l, int find);
 
 int main()
 {
     int arr[100];
-    int l(0), buff(0);
+    int l(0), find(0);
     cout << "Insert array lenght: ";
     cin >> l;
+     cout << endl
+         << "insert nubmer to find: " << endl;
+    cin >> find;
+
+    srand(time(0));
 
     for (int i = 0; i < l; i++)
     {
+
         arr[i] = rand() % 100;
         cout << arr[i] << " ";
     }
 
+    arr[rand()%l] = find;
+
     // quicksort(arr, l);
-    qsortRecursive(arr, l);
+    quicksort(arr, l);
     printarr(arr, l);
+
+   
+    
+
+    findI(arr, l, find);
 }
 
-void quicksort(int arr[100], int l)
+void quicksort(int *arr, int l)
 {
     /*  быстрая сортировка делит массив на две части и перекидывает элементы влево (меньше) и вправо (больше)
         функция рекурсивная и и вызывает сама себя, сортируя каждые две доли, которые получаются от разделения
@@ -87,6 +101,8 @@ void quicksort(int arr[100], int l)
     int mid = arr[l / 2]; // mid = значение в середине массива
     int tmp(0);
 
+    cout << endl << "Mid: " << mid << endl;
+
     do
     {
         while (arr[i] < mid) //пока левое значение меньше середины перебираем массив до ближайшего к центру
@@ -100,7 +116,8 @@ void quicksort(int arr[100], int l)
         {
             j--;
             cout << endl
-                 << "j cyc: " << j;
+                 << "j cyc: " << j << endl
+                 << "arr[j]: " << arr[j] << endl;
         }
 
         if (i <= j) // меняем местами элементы
@@ -117,9 +134,10 @@ void quicksort(int arr[100], int l)
         }
     } while (i <= j);
 
-    // вот до этого момента все понятно
+    cout << endl << "end of swap. " << "recursive next. i: " << i << " j: " << j << endl << endl;
 
-    //Левая сортировка работает нормально кажется
+    // вот до этого момента все понятно, а дальше начинаю путаться мал мал. из за j i входных. Просто нужно доработать кейс на бумаге.
+
     if (j > 0)
     {
         cout << endl
@@ -128,73 +146,12 @@ void quicksort(int arr[100], int l)
         quicksort(arr, j + 1);
     }
 
-    //правая сортировка все ломает
     if (i < l)
     {
         cout << endl
              << "right" << endl;
         printarr(arr, l);
-        quicksort(arr, l - i);
-    }
-}
-
-void qsortRecursive(int *mas, int size)
-{
-    //Указатели в начало и в конец массива
-    int i = 0;
-    int j = size - 1;
-
-    //Центральный элемент массива
-    int mid = mas[size / 2];
-
-    cout <<endl <<"mid: "<< mid << endl<< endl;
-
-    //Делим массив
-    do
-    {
-        //Пробегаем элементы, ищем те, которые нужно перекинуть в другую часть
-        //В левой части массива пропускаем(оставляем на месте) элементы, которые меньше центрального
-        while (mas[i] < mid)
-        {
-            i++;
-        }
-        //В правой части пропускаем элементы, которые больше центрального
-        while (mas[j] > mid)
-        {
-            j--;
-        }
-
-        //Меняем элементы местами
-        if (i <= j)
-        {
-            int tmp = mas[i];
-            mas[i] = mas[j];
-            mas[j] = tmp;
-            cout << endl
-                 << "arr i sw: " << mas[i] << " arr j sw: " << mas[j] << endl;
-            printarr(mas, size);
-            i++;
-            j--;
-            cout << "i++: " << i << " j++: " << j << endl;
-        }
-    } while (i <= j);
-
-    //Рекурсивные вызовы, если осталось, что сортировать
-    if (j > 0)
-    {
-        //"Левый кусок"
-        cout << endl
-             << "left" << endl;
-        printarr(mas, size);
-        qsortRecursive(mas, j + 1);
-    }
-    if (i < size)
-    {
-        //"Првый кусок"
-        cout << endl
-             << "right" << endl;
-        printarr(mas, size);
-        qsortRecursive(&mas[i], size - i);
+        quicksort(&arr[i], l - i);
     }
 }
 
@@ -269,4 +226,21 @@ void printarr(int arr[100], int l)
 
     cout << endl
          << endl;
+}
+
+void findI(int arr[100], int l, int find)
+{
+    int finder(0);
+    for (int i = 0; i < l; i++)
+    {
+        if (arr[i] == find)
+        {
+            finder = i;
+            cout << endl << "finder cycle check = " << finder <<endl;
+            break;
+        }
+    }
+    cout << endl
+         << endl
+         << "Index is: " << finder << endl;
 }
