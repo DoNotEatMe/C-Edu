@@ -25,6 +25,7 @@ int main()
     }
     arrayMinMax(&n, arr, &arrMax, &arrMin);
     delete arr;
+    arr = nullptr;
 }
 
 void arrayMinMax(const int *n, int *arr, int *arrMax, int *arrMin)

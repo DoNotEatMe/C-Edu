@@ -31,7 +31,8 @@ int main()
     {
         cout << arr[i] << " ";
     }
-    delete arr;
+    delete [] arr;
+    arr = nullptr;
 }
 
 void arrayMinMax(const int *n, int *arr, int *arrMax, int *arrMin)

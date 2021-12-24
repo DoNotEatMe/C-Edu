@@ -48,6 +48,9 @@ int main()
 
     delete [] arr;
     delete [] arr2;
+    
+    arr = nullptr;
+    arr2 = nullptr;
 
     cout << endl;
 
