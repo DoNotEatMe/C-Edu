@@ -8,7 +8,7 @@ int *read(int &size)
 
     for (int i = 0; i < size; i++)
     {
-        Array[i] = rand();
+        Array[i] = rand() % 10;
         cout << Array[i] << " ";
     }
     return Array;
