@@ -22,7 +22,7 @@ int main()
     cout << endl;
     for (int i = 1; i <= 3; i++)
     {
-        int *arr = testcase(lenght, i); // делаем указатель в цикле. Как его разрушить?
+        int *arr = testcase(lenght, i); // делаем указатель в цикле. Как его разрушить за пределами цикла for?
         ptintArray(arr, lenght);
         nearest(arr, lenght);
         delete [] arr;
