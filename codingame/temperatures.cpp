@@ -25,6 +25,8 @@ int main()
         int *arr = testcase(lenght, i); // делаем указатель в цикле. Как его разрушить?
         ptintArray(arr, lenght);
         nearest(arr, lenght);
+        delete [] arr;
+        arr = nullptr;
     }
 }
 
