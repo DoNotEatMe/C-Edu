@@ -8,7 +8,7 @@ using namespace std;
 //  Write a program that prints the temperature closest to 0 among input data.
 //  If two numbers are equally close to zero, positive integer has to be considered closest to zero
 //  (for instance, if the temperatures are -5 and 5, then display 5).
-// Display 0 (zero) if no temperatures are provided. Otherwise, display the temperature closest to 0.
+//  Display 0 (zero) if no temperatures are provided. Otherwise, display the temperature closest to 0.
 
 int *input(const int &lenght, int choose);
 int *testcase(const int &lenght, int choose);
@@ -84,10 +84,13 @@ void nearest(int *arr, const int &lenght)
         arr[i] < 0 ? (arr[i] > min ? min = arr[i] : false) : false;
     }
 
-    (max == INT_MAX && min == INT_MIN) ? result = 0 : max - (min * -1) <= 0 ? result = max
-                                                                            : result = min;
+    (max == INT_MAX && min == INT_MIN)
+        ? result = 0
+    : max - (min * -1) <= 0
+        ? result = max
+    : result = min;
 
-    cout << "Nearest to zero result is: " << result <<  endl;
+    cout << "Nearest to zero result is: " << result << endl;
     cout << endl
          << endl;
 }
