@@ -10,8 +10,8 @@ using namespace std;
 //  (for instance, if the temperatures are -5 and 5, then display 5).
 //  Display 0 (zero) if no temperatures are provided. Otherwise, display the temperature closest to 0.
 
-int *input(const int &lenght, int choose);
 int *testcase(const int &lenght, int choose);
+int *input(const int &lenght, int choose);
 void ptintArray(int *arr, const int &lenght);
 void nearest(int *arr, const int &lenght);
 
