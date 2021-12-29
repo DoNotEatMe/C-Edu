@@ -9,7 +9,6 @@ main()
 {
     srand(time(0));
     int lenght = 3 + rand() % 13;
-    // int *arr = new int [lenght];
     vector<int> arr(lenght);
     int val(0), posInd;
 
