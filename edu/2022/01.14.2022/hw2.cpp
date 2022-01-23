@@ -38,10 +38,12 @@ int main()
 
     for (auto it = shoppingCart.begin(); it != shoppingCart.end(); it++)
     {
-        *it >= maxPrice ? (maxPrice = *it, maxInd = shoppingCart.) : *it;
-        *it <= minPrice ? (minPrice = *it, minInd = shoppingCart) : *it;
-        
+        *it >= maxPrice ? (maxPrice = *it, maxInd = it - shoppingCart.begin()) : *it;
+        *it <= minPrice ? (minPrice = *it, minInd = it - shoppingCart.begin()) : *it;
     }
- 
-    cout << maxPrice << " " << maxInd << endl << minPrice << " " << minInd << endl;
+
+    cout << "Min price of product from shopping cart is: " << minPrice << " RUR"
+         << " and index is:  " << minInd << endl;
+    cout << "Max price of product from shopping cart is: " << maxPrice << " RUR"
+         << " and index is:  " << maxInd << endl;
 }
