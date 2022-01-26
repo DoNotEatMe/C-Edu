@@ -38,6 +38,6 @@ int main(){
     Animal cat;
     Animal cat2(10,"catname", 13.5);
     home_an cat3(10,"catname", 13.5, 1);
-
+1
 
 }
