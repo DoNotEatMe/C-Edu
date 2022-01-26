@@ -17,7 +17,7 @@ public:
              << "Animal weight: " << weight << endl
              << "Animal age: " << age << endl
              << "Animal sex: " << ((sex == true) ? "M" : "W") << endl;
-    }
+    }1
 
     void read()
     {
