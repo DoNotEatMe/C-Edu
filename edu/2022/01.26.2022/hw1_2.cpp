@@ -26,43 +26,48 @@ int positive()
     return value;
 }
 
-int test(int value){
-    while ( (value < 1) && (value > 10)){
-        // value = positive();
-        cin >> value;
-        if (value < 1 && value > 10 ) {cout << "please insert value between 1 and 10: ";};
+int health(){
+    int value;
+    cin >> value;
+    while ( (value < 1) || (value > 10)){
+        cout << "please insert value between 1 and 10: ";
+        value = positive();        
+    }
+    return value;
+}
+
+int damage(){
+    int value;
+    cin >> value;
+    while ( (value < 20) || (value > 100)){
+        cout << "please insert value between 20 and 100: ";
+        value = positive();        
     }
     return value;
 }
 
 
-
 int main()
 {
     character player;
-    int tmp;
+    
 
     cout << "Insert name: ";
     cin >> player.name;
 
     cout << "Insert expirience: \nmust be positive value\n";
-
     player.exp = positive();
 
     cout << "Insert player speed: \nmust be positive value\n";
-    
     player.speed = positive();
 
     cout << "Insert health: \nmust be positive value between 1 and 10\n";
-   
-    tmp = -3;
-    test(tmp);
+    player.health = health();
     
  
 
     cout << "Insert damage: \nmust be positive value between 20 and 100\n";
-   
-    player.damage = positive();
+    player.damage = damage();
 
     cout << endl;
     cout << "Character created!" << endl;
