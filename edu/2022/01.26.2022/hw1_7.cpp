@@ -148,16 +148,6 @@ int main()
     character *st1_ptr = new stoneman;
     character *st2_ptr = new stonemanver2;
 
-    // Вектор указателей получается создает
-    // character = npc[0], character = npc[1],....
-    // и каждый character указывает на new child
-    // Каждому character выделяется память в соответствии с конструктором класса или
-    // мы создаем только ссылку на child?
-    //
-    // А как деструкторы работают с динамической памятью?
-    // Например у меня есть в родительском и последнем дочернем классе с cout для логирования
-    // Но нет сработки к завершению программы
-
     npc.push_back(gol_ptr);
     npc.push_back(fai_ptr);
     npc.push_back(st1_ptr);
