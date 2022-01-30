@@ -51,9 +51,9 @@ public:
     {
         cout << "Player info: " << getName() << ", " << getExp() << " exp, " << getSpeed() << " speed, " << getHealth() << " health, " << getDamage() << " dmg. " << endl;
     }
-    ~character()
+    virtual ~character()
     {
-        cout << "destructed";
+        cout << "destructed character ";
     }
 };
 
@@ -73,6 +73,10 @@ public:
     void info()
     {
         cout << "Player info: " << getName() << ", " << getExp() << " exp, " << getSpeed() << " speed, " << getHealth() << " health, " << getDamage() << " dmg, " << getPower() << " native power." << endl;
+    }
+    ~golum()
+    {
+        cout << "destructed golum ";
     }
 };
 
@@ -94,6 +98,10 @@ public:
     {
         return fairyPower;
     }
+    ~fairy()
+    {
+        cout << "destructed fairy ";
+    }
 };
 
 class stoneman : public character
@@ -113,6 +121,10 @@ public:
     int getPower()
     {
         return stonePower;
+    }
+    ~stoneman()
+    {
+        cout << "destructed stoneman ";
     }
 };
 
@@ -136,7 +148,7 @@ public:
     }
     ~stonemanver2()
     {
-        cout << "destructed";
+        cout << "destructed stonemanver2 ";
     }
 };
 
@@ -157,4 +169,24 @@ int main()
     {
         it->info();
     }
+    cout << endl;
+
+    //Виртуальные мать его декструкторы для ссылок родительского класса на мать их дочерние классы в динамической памяти, которые нужно вызывать руками для каждого элемента.
+    // деструкторы не убивают классы из динамической памяти,
+    // соответственно нужно вызывать каждый руками
+    // уничтожают все только в рамках указателя, не уничтожают все как в инициализированных в стеке.
+    delete gol_ptr;
+    cout << endl;
+    delete fai_ptr;
+    cout << endl;
+    delete st1_ptr;
+    cout << endl;
+    delete st2_ptr;
+    cout << endl;
+    delete gol_ptr; // не срабатывает, потому что элемент уже уничтожен.
+
+    //  for (auto &it : npc)
+    // {
+    //     it->info();
+    // }
 }
