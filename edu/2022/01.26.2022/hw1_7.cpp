@@ -24,7 +24,8 @@ protected:
     int damage;
 
 public:
-    character(string name = "player", int exp = 0, int speed = 5, int health = 10, int damage = 3) : name(name), exp(exp), speed(speed), health(health), damage(damage) {}
+    character(string name = "player", int exp = 0, int speed = 5, int health = 10, int damage = 3) : name(name), exp(exp), speed(speed), health(health), damage(damage) {
+        cout << "char +\n";    }
 
     string getName()
     {
@@ -53,7 +54,8 @@ public:
     }
     virtual ~character()
     {
-        cout << "destructed character ";
+        cout << "char-\n";
+        //  delete this;
     }
 };
 
@@ -63,7 +65,9 @@ private:
     int goblinPower;
 
 public:
-    golum(string name = "Goblin", int exp = 0, int speed = 4, int health = 13, int damage = 7, int goblinPower = 1) : character(name, exp, speed, health, damage), goblinPower(goblinPower) {}
+    golum(string name = "Goblin", int exp = 0, int speed = 4, int health = 13, int damage = 7, int goblinPower = 1) : character(name, exp, speed, health, damage), goblinPower(goblinPower) {
+        cout << "gol +\n";
+    }
 
     int getPower()
     {
@@ -76,7 +80,8 @@ public:
     }
     ~golum()
     {
-        cout << "destructed golum ";
+        cout << "gol -\n";
+        // delete this;
     }
 };
 
@@ -88,6 +93,7 @@ private:
 public:
     fairy(string name = "Fairy", int exp = 0, int speed = 7, int health = 7, int damage = 2, int fairyPower = 2) : character(name, exp, speed, health, damage), fairyPower(fairyPower)
     {
+        cout << "fai +\n";
     }
 
     void info()
@@ -100,7 +106,8 @@ public:
     }
     ~fairy()
     {
-        cout << "destructed fairy ";
+        cout << "fai -\n";
+        //  delete this;
     }
 };
 
@@ -112,6 +119,7 @@ private:
 public:
     stoneman(string name = "StoneMan", int exp = 0, int speed = 2, int health = 20, int damage = 1, int stonePower = 3) : character(name, exp, speed, health, damage), stonePower(stonePower)
     {
+        cout << "st1 +\n";
     }
 
     void info()
@@ -122,9 +130,10 @@ public:
     {
         return stonePower;
     }
-    ~stoneman()
+    virtual ~stoneman()
     {
-        cout << "destructed stoneman ";
+        cout << "gst1 -\n";
+        //  delete this;
     }
 };
 
@@ -136,6 +145,7 @@ private:
 public:
     stonemanver2(string name = "StoneManVer2", int exp = 0, int speed = 1, int health = 40, int damage = 3, int stone2Power = 5) : character(name, exp, speed, health, damage), stone2Power(stone2Power)
     {
+        cout << "st2 +\n";
     }
 
     void info()
@@ -148,7 +158,8 @@ public:
     }
     ~stonemanver2()
     {
-        cout << "destructed stonemanver2 ";
+        cout << "st2 -\n";
+        // delete this;
     }
 };
 
@@ -175,18 +186,40 @@ int main()
     // деструкторы не убивают классы из динамической памяти,
     // соответственно нужно вызывать каждый руками
     // уничтожают все только в рамках указателя, не уничтожают все как в инициализированных в стеке.
-    delete gol_ptr;
-    cout << endl;
-    delete fai_ptr;
-    cout << endl;
-    delete st1_ptr;
-    cout << endl;
-    delete st2_ptr;
-    cout << endl;
-    delete gol_ptr; // не срабатывает, потому что элемент уже уничтожен.
+    // delete gol_ptr;
+    // cout << endl;
+    // delete fai_ptr;
+    // cout << endl;
+    // delete st1_ptr;
+    // cout << endl;
+    // delete st2_ptr;
+    // cout << endl;
+    // delete gol_ptr; // не срабатывает, потому что элемент уже уничтожен.
 
-    //  for (auto &it : npc)
-    // {
-    //     it->info();
-    // }
+    for (auto &it : npc)
+    {
+        // it->~character();
+        //деструктор не применим к объектам в динамической памяти. Каждый динамический объект 
+        //созданный подобным образом как в примере нужно чистить самим.
+        //При вызове delete this входим в бесконечный цикл.
+        delete it;
+    }
+    cout << " At this point heap must be cleaned";
+
+    cout << endl << "&it check said that we have just first iter ref, so we are clean" << endl;
+
+     for (auto &it : npc)
+    {
+        int i = 0;
+        cout << &it <<"  "<< i;
+        it->info(); 
+        cout << &it << endl;
+    i++;
+    }
+
+    
+
+   
+   
+
 }
