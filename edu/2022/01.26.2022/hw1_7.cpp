@@ -54,6 +54,7 @@ public:
     virtual ~character()
     {
         cout << "destructed character ";
+         delete this;
     }
 };
 
@@ -77,6 +78,7 @@ public:
     ~golum()
     {
         cout << "destructed golum ";
+         delete this;
     }
 };
 
@@ -101,6 +103,7 @@ public:
     ~fairy()
     {
         cout << "destructed fairy ";
+         delete this;
     }
 };
 
@@ -125,6 +128,7 @@ public:
     ~stoneman()
     {
         cout << "destructed stoneman ";
+         delete this;
     }
 };
 
@@ -149,6 +153,7 @@ public:
     ~stonemanver2()
     {
         cout << "destructed stonemanver2 ";
+        delete this;
     }
 };
 
@@ -184,6 +189,8 @@ int main()
     delete st2_ptr;
     cout << endl;
     delete gol_ptr; // не срабатывает, потому что элемент уже уничтожен.
+
+    //Также необходим вызов delete this в деструкторе, чтобы убить динамический класс.
 
     //  for (auto &it : npc)
     // {
