@@ -210,9 +210,11 @@ int main()
 
      for (auto &it : npc)
     {
-        cout << &it;
+        int i = 0;
+        cout << &it <<"  "<< i;
         it->info(); 
         cout << &it << endl;
+    i++;
     }
 
     
