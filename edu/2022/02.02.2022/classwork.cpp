@@ -97,6 +97,10 @@ for (int i = 0; i < col; i++){
         Character* pSol = new Soldier;
         characters.push_back(pSol);
     }
+    if (what == "cha"){
+        Character* pChar = new Character;
+        characters.push_back(pChar);
+    }
 
 }
 
